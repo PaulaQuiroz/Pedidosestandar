@@ -1,0 +1,143 @@
+{% set titulo = 'Importar Bases de Datos' %}
+
+{% extends 'plantilla.njk' %}
+
+{% block content %}
+<div class="card">
+	<div class="card-content">
+		<div class="importing">
+			<i id="productos" class="material-icons">more_horiz</i>
+			<span>Importando productos...</span>
+		</div>
+        <div class="importing">
+            <i id="verificar-productos" class="material-icons">more_horiz</i>
+            <span>Verificando productos...</span>
+        </div>
+		<div class="importing">
+			<i id="precios" class="material-icons">more_horiz</i>
+			<span>Importando precios...</span>
+		</div>
+        <div class="importing">
+            <i id="verificar-precios" class="material-icons">more_horiz</i>
+            <span>Verificando precios...</span>
+        </div>
+		<div class="importing">
+			<i id="cadenas" class="material-icons">more_horiz</i>
+			<span>Importando cadenas...</span>
+		</div>
+        <div class="importing">
+            <i id="verificar-cadenas" class="material-icons">more_horiz</i>
+            <span>Verificando cadenas...</span>
+        </div>
+		<div class="importing">
+			<i id="puntos_venta" class="material-icons">more_horiz</i>
+			<span>Importando puntos de venta...</span>
+		</div>
+        <div class="importing">
+            <i id="verificar-puntosventa" class="material-icons">more_horiz</i>
+            <span>Verificando puntos de venta...</span>
+        </div>
+{#
+		<div class="importing">
+			<i id="facturas" class="material-icons">more_horiz</i>
+			<span>Importando facturas y devoluciones...</span>
+		</div>
+#}
+		<div>&nbsp;</div>
+		<div id="msg">
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+    <!-- Productos -->
+    <div class="card" id="bloque-productos" style="display:none">
+        <div class="card-content">
+            <h3 class="heading">Productos no importados</h3>
+            <div id="tabla_wrapper" class="dataTables_wrapper no-footer">
+                <table id="tabla-productos" class="table-pink dataTable no-footer" role="grid" aria-describedby="tabla_info">
+                    <thead>
+                    <tr role="row">
+                        <th class="sorting_disabled">Mensaje</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Precios -->
+    <div class="card" id="bloque-precios" style="display:none">
+        <div class="card-content">
+            <h3 class="heading">Precios no importados</h3>
+            <div id="tabla_wrapper" class="dataTables_wrapper no-footer">
+                <table id="tabla-precios" class="table-pink dataTable no-footer" role="grid" aria-describedby="tabla_info">
+                    <thead>
+                    <tr role="row">
+                        <th class="sorting_disabled">Mensaje</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cadenas -->
+    <div class="card" id="bloque-cadenas" style="display:none">
+        <div class="card-content">
+            <h3 class="heading">Cadenas no importadas</h3>
+            <div id="tabla_wrapper" class="dataTables_wrapper no-footer">
+                <table id="tabla-cadenas" class="table-pink dataTable no-footer" role="grid" aria-describedby="tabla_info">
+                    <thead>
+                    <tr role="row">
+                        <th class="sorting_disabled">Mensaje</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puntos de ventas -->
+    <div class="card" id="bloque-puntos-venta" style="display:none">
+        <div class="card-content">
+            <h3 class="heading">Puntos de ventas no importados</h3>
+            <div id="tabla_wrapper" class="dataTables_wrapper no-footer">
+                <table id="tabla-puntos-ventas" class="table-pink dataTable no-footer" role="grid" aria-describedby="tabla_info">
+                    <thead>
+                    <tr role="row">
+                        <th class="sorting_disabled">Mensaje</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block modals %}
+<div id="confirmar-modal" class="modal">
+	<div class="modal-content">
+		<h4>Advertencia</h4>
+		<p>Al momento de importar las bases de datos es posible que se inhabilite temporalmente el sistema de pedidos. Por favor, proceda con cautela.</p>
+	</div>
+		<div class="modal-footer">
+		<button id="cancelar" type="button" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</button>
+		<button id="continuar" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/importar.js"></script>
+{% endblock %}

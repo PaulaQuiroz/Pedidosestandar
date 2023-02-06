@@ -1,0 +1,80 @@
+/**
+ * Popsy Pedidos
+ * Hoja de estilos del login
+ *
+ * Autor: Elsa@Joonik
+ */
+
+@import '_general';
+
+body {
+	background: url(/img/bg/bg-back.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+h1 {
+	font-size: 36px;
+	font-weight: 500;
+	color: #fff;
+	position: fixed;
+	text-align: center;
+	width: 100%;
+	top: 3%;
+	-webkit-text-shadow: 2px 2px 2px #555;
+	-moz-text-shadow: 2px 2px 2px #555;
+	-o-text-shadow: 2px 2px 2px #555;
+	text-shadow: 2px 2px 2px #555;
+}
+
+.card {
+	width: 360px;
+	height: 450px;
+	float: none;
+	margin: 0 auto;
+	margin-top: 130px;
+
+	.card-content {
+		padding: 20px 30px;
+	}
+
+	.input-field {
+		padding: 0;
+		color: #444;
+
+		input {
+			color: #444;
+		}
+	}
+
+	label {
+		left: 0;
+		color: #444;
+		font-size: 14px;
+	}
+
+	input[type=email] {
+		margin-top: 20px;
+		margin-bottom: 0;
+	}
+
+	input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]) {
+		border-bottom: 1px solid #1976d2;
+		box-shadow: 0 1px 0 0 #1976d2;
+
+		+ label {
+			color: #727272;
+		}
+	}
+
+	img {
+		display: block;
+		margin: 0 auto;
+	}
+
+	button {
+		width: 100%;
+	}
+}

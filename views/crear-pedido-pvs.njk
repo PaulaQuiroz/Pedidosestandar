@@ -1,0 +1,32 @@
+{% set titulo = 'Crear Pedido' %}
+
+{% extends 'plantilla.njk' %}
+
+{% block content %}
+<div class="card">
+	<div class="card-content">
+		<h3 class="heading">Lista de puntos de venta</h3>
+		<div class="row">
+			<div class="input-field col s12 m6"></div>
+			<div class="input-field col s12 m6">
+				<input placeholder="Nombre" id="buscar" type="text" class="validate">
+				<label for="buscar">Buscar por nombre</label>
+			</div>
+		</div>
+		<table id="tabla" class="table-pink">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Dirección</th>
+					<th>Ciudad</th>
+					<th></th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/js/crear-pedido-pvs.js"></script>
+{% endblock %}

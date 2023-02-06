@@ -1,0 +1,66 @@
+<!DOCTYPE html{% if ie %} PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"{% endif %}>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+{% if not ie %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+{% endif %}
+	<title>Ingresar - Pedidos Popsy</title>
+	<link rel="icon" href="/favicon.ico">
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" media="screen,projection">
+	<link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+	<div class="row">
+		<h1 class="welcome">Bienvenido!</h1>
+		<div class="card white">
+			<div class="card-content">
+				<img src="/img/logo.png">
+{% if err %}
+				<div class="login-err">{{ err }}</div>
+{% endif %}
+				<form id="login" action="/" method="POST">
+					<div class="row">
+						<div class="input-field col s12">
+{% if ie %}
+						<div>E-mail / Nombre de usuario</div>
+{% endif %}
+						  <input id="username" type="text" name="username" class="validate" required>
+{% if not ie %}
+						  <label for="username">E-mail / Nombre de usuario</label>
+{% endif %}
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+{% if ie %}
+						<div>Contraseña</div>
+{% endif %}
+						  <input id="pass" type="password" name="pass" class="validate" required>
+{% if not ie %}
+						  <label for="pass">Contraseña</label>
+{% endif %}
+						</div>
+					</div>
+					<div class="row">
+						<button type="submit" class="waves-effect waves-light btn lime darken-2">Ingresar</button>
+					</div>
+					<div class="row left">
+						<input type="checkbox" id="recordar" class="filled-in" name="recordar" />
+						<label for="recordar">Mantener la sesión iniciada</label>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer>
+		&copy; 2016 Popsy - Todos los derechos reservados
+	</footer>
+{% if not ie %}
+	<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+	<script src="/js/login.js"></script>
+{% endif %}
+</body>
+</html>

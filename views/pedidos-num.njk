@@ -1,0 +1,41 @@
+{% set titulo = 'Consulte sus pedidos' %}
+
+{% extends 'plantilla.njk' %}
+
+{% block content %}
+<div class="card">
+	<div class="card-content">
+		<h3 class="heading">Detalles del pedido</h3>
+{#
+		<div class="row">
+			<div class="col s12 m6">
+				<div>{{ sup.nombre }} <a href="mailto:{{ sup.username }}">&lt;{{ sup.username }}&gt;</a></div>
+				<div class="caption">{{ sup.descripcion }}</div>
+			</div>
+			<div class="input-field col s12 m6">
+				<input placeholder="Nombre" id="buscar" type="text" class="validate">
+				<label for="buscar">Buscar por nombre</label>
+			</div>
+		</div>
+#}
+		<table id="tabla" class="table-pink">
+			<thead>
+				<tr>
+					<th>Nombre del Producto</th>
+					<th>Cantidad</th>
+					{% if precioHabilitado %}
+						<th>Total</th>
+					{% endif %}
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const precioHabilitado = '{{ precioHabilitado }}';
+    </script>
+    <script src="/js/pedidos-num.js"></script>
+{% endblock %}

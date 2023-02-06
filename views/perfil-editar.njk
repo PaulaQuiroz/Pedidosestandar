@@ -1,0 +1,53 @@
+{% set titulo = 'Editar Perfil' %}
+
+{% extends 'plantilla.njk' %}
+
+{% block content %}
+<div class="card">
+	<div class="card-content row">
+		<h3 class="heading">Información del usuario</h3>
+		<div id="info-usuario" class="container">
+			<div class="row">
+				<div class="input-field col s12 m6">
+					<input type="text" id="nombre" class="validate" name="nombre" placeholder="Nombre y Apellido" value="{{ usuario.nombre }}" disabled>
+					<label for="nombre">Nombre</label>
+				</div>
+				<div class="input-field col s12 m6">
+					<input type="text" id="username" class="validate" name="username" placeholder="E-mail / Nombre de usuario" value="{{ usuario.username }}" disabled>
+					<label for="username">E-mail / Nombre de usuario</label>
+				</div>
+			</div>
+			<button type="button" class="waves-effect waves-light btn lime darken-2" disabled>Actualizar datos</button>
+		</div>
+	</div>
+</div>
+<div class="card">
+	<div class="card-content row">
+		<h3 class="heading">Contraseña</h3>
+		<form id="cambiar-pass" class="container">
+			<div class="row">
+				<div class="input-field col s12 m6">
+					<input type="password" id="pass" class="validate" name="pass" placeholder="Contraseña Actual" title="Ingrese al menos seis caracteres" required>
+					<label for="pass">Contraseña Actual</label>
+				</div>
+				<div class="col s12 m6"></div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12 m6">
+					<input type="password" id="nuevo-pass" class="validate" name="nuevo_pass" placeholder="Nueva Contraseña" pattern=".{6,}" title="Ingrese al menos seis caracteres" required>
+					<label for="nuevo-pass">Nueva Contraseña</label>
+				</div>
+				<div class="input-field col s12 m6">
+					<input type="password" id="re-nuevo-pass" class="validate" placeholder="Re-Ingrese Nueva Contraseña" pattern=".{6,}" title="Ingrese al menos seis caracteres" required>
+					<label for="re-nuevo-pass">Re-Ingrese Nueva Contraseña</label>
+				</div>
+			</div>
+			<button type="submit" class="waves-effect waves-light btn lime darken-2">Actualizar contraseña</button>
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/js/perfil-editar.js"></script>
+{% endblock %}

@@ -1,0 +1,46 @@
+{
+  "name": "popsy-pedidos",
+  "version": "2.0.0",
+  "description": "Popsy Pedidos",
+  "main": "server.js",
+  "scripts": {
+    "develp": "node-sass -w --include-path sass -o public/css sass & MSSQL_DB=POPSY0032019 MSSQL_SERVER=192.168.2.191 MYSQL_HOST=192.168.2.191 MYSQL_USER=popsy MYSQL_PASS=popsy MYSQL_DB=popsy nodemon --ignore public --ignore views  server.js & livereload \"public, views\" -e njk",
+    "devel": "node-sass -w --include-path sass -o public/css sass & nodemon --ignore public --ignore views server.js & livereload \"public, views\" -e njk",
+    "start": "rimraf public/css && node-sass --include-path sass --output-style compressed -o public/css sass && NODE_ENV=production node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/joonik/popsy-pedidos.git"
+  },
+  "keywords": [
+    "popsy",
+    "pedidos"
+  ],
+  "author": "Joonik",
+  "license": "UNLICENSED",
+  "private": true,
+  "homepage": "https://bitbucket.org/joonik/popsy-pedidos#readme",
+  "dependencies": {
+    "async": "^2.0.1",
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "connect-sqlite3": "^0.9.8",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "knex": "^0.11.10",
+    "mssql": "^3.3.0",
+    "mysql": "^2.11.1",
+    "node-sass": "^3.9.3",
+    "nodemailer": "^2.6.4",
+    "nunjucks": "^2.4.2",
+    "rimraf": "^2.5.4",
+    "serve-favicon": "^2.3.0",
+    "socket.io": "^1.4.8"
+  },
+  "devDependencies": {
+    "livereload": "^0.5.0",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.10.2"
+  }
+}

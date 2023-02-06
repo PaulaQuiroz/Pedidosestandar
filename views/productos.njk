@@ -1,0 +1,66 @@
+{% set titulo = 'Configurar Productos' %}
+
+{% extends 'plantilla.njk' %}
+
+{% block content %}
+<div class="card">
+	<div class="card-content row">
+		<h3 class="heading">Cadenas</h3>
+		<div class="input-field col s12 m6">
+			<select id="cadenas">
+				<option value="" disabled selected>Seleccione&hellip;</option>
+{% for cadena in cadenas %}
+				<option value="{{ cadena.id }}">{{ cadena.nombre }}</option>
+{% endfor %}
+			</select>
+			<label for="cadenas">Lista de cadenas</label>
+		</div>
+		<div class="input-field col s12 m6">
+			<select id="nit" disabled>
+				<option value="" disabled selected>Seleccione&hellip;</option>
+			</select>
+			<label for="grupos-precios">NIT</label>
+		</div>
+		<div class="input-field col s12 m6">
+			<select id="sucursal" disabled>
+				<option value="" disabled selected>Seleccione&hellip;</option>
+			</select>
+			<label for="grupos-precios">Sucursal</label>
+		</div>
+		<div class="input-field col s12 m6">
+			<select id="grupos-precios" disabled>
+				<option value="" disabled selected>Seleccione&hellip;</option>
+			</select>
+			<label for="grupos-precios">Grupos de precios</label>
+		</div>
+	</div>
+</div>
+
+<div class="card hide">
+	<div class="card-content">
+		<h3 class="heading">Lista de productos por cadena</h3>
+		<div class="row">
+			<div class="input-field col s12 m6"></div>
+			<div class="input-field col s12 m6">
+				<input placeholder="Nombre" id="buscar" type="text" class="validate">
+				<label for="buscar">Buscar por nombre</label>
+			</div>
+		</div>
+		<table id="tabla" class="table-pink">
+			<thead>
+				<tr>
+					<th>Código</th>
+					<th>Nombre</th>
+					<th>Presentación</th>
+					<th>Precio</th>
+					<th>Activo</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/js/productos.js"></script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% set titulo = 'Actualizar categoría' %}
+
+{% extends '../plantilla.njk' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-content">
+            <h3 class="heading">Actualizar</h3>
+            <div class="row">
+                <div class="input-field col s12 m12">
+                    <div class="row">
+                        <div class="input-field col s6 m6">
+                            <input type="text" id="nombre" class="validate" value="{{ categoria.nombre }}" placeholder="Nombre de la categoria">
+                            <label for="username">Nombre</label>
+                        </div>
+                        <div class="input-field col s6 m6">
+                            <select class="validate" id="habilitado">
+                                <option value="S" {% if categoria.habilitado === 'S' %}selected{% endif %}>Habilitado</option>
+                                <option value="N" {% if categoria.habilitado === 'N' %}selected{% endif %}>Deshabilitado</option>
+                            </select>
+                            <label for="nombre">Mostrar precios</label>
+                        </div>
+                    </div>
+                    <input type="hidden" id="id-categoria" value="{{ categoria.id }}">
+                    <a type="button" href="./../" class="waves-effect btn lime darken-2">
+                        Volver
+                    </a>
+                    <a type="button" href="#" id="actualizar-categoria" class="waves-effect waves-light btn lime darken-2">
+                        Actualizar Categoria
+                    </a>
+                </div>
+                <div class="col s12 m6"></div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block modals %}
+    <div id="verificacion-modal" class="modal">
+        <div class="modal-content">
+            <h4>Advertencia</h4>
+            <p id="descripcion-moda-verificacion">Debe llenar todos los campos para continuar.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="continuar" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+        </div>
+    </div>
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <h4>Advertencia</h4>
+            <p>Se encontraron problemas al momento de actualizar la información.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="continuar" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+        </div>
+    </div>
+    <div id="completado-modal" class="modal">
+        <div class="modal-content">
+            <h4>Completado</h4>
+            <p>Se actualizó la información correctamente.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="continuar" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+        </div>
+    </div>
+    <div id="crear-modal" class="modal">
+        <div class="modal-content">
+            <h4>Completado</h4>
+            <p>Se guardó la información correctamente.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="continuar" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="/js/categorias.js"></script>
+{% endblock %}

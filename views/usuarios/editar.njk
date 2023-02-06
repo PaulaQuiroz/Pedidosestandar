@@ -1,0 +1,111 @@
+{% set titulo = 'Actualizar usuario' %}
+
+{% extends '../plantilla.njk' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-content">
+            <h3 class="heading">Actualizar</h3>
+            <div class="row">
+                <div class="input-field col s12 m12">
+                    <div class="row">
+                        <div class="input-field col s4 m4">
+                            <input type="text" id="username" class="validate" name="username" value="{{ infoUsuario.username }}" placeholder="Nombre de usuario" required>
+                            <label for="username">Usuario</label>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <input type="text" id="email" class="validate" name="email" value="{{ infoUsuario.email }}" placeholder="E-mail" required>
+                            <label for="username">E-mail</label>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <input type="text" id="nombre" class="validate" name="nombre" value="{{ infoUsuario.nombre }}" placeholder="Nombre y Apellido" required>
+                            <label for="nombre">Nombre</label>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <input type="password" id="clave" class="validate" name="clave" placeholder="Contraseña">
+                            <label for="nombre">Contraseña</label>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <input type="text" id="descripcion" class="validate" name="descripcion" value="{{ infoUsuario.descripcion }}"  placeholder="Descripción" required>
+                            <label for="nombre">Descripción</label>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <select class="validate" name="estado" id="estado">
+                                <option value="1" {% if infoUsuario.habilitado === 1 %}selected{% endif %}>Activo</option>
+                                <option value="0" {% if infoUsuario.habilitado === 0 %}selected{% endif %}>Inactivo</option>
+                            </select>
+                            <label for="nombre">Estado</label>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <select class="validate" name="rol" id="rol">
+                                {% for rol in roles %}
+                                    <option value="{{ rol.id }}" {% if infoUsuario.rol === rol.id %}selected{% endif %}>{{ rol.descripcion }}</option>
+                                {% endfor %}
+                            </select>
+                            <label for="nombre">Rol</label>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <select class="validate" name="cadena" id="cadena">
+                                {% for cadena in cadenas %}
+                                    <option value="{{ cadena.id }}" {% if infoUsuario.cadena === cadena.id %}selected{% endif %}>{{ cadena.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                            <label for="nombre">Cadena</label>
+                        </div>
+                        <div class="input-field col s4 m4">
+                            <select class="validate" name="punto" id="punto-venta">
+                                {% for pv in puntosVentas %}
+                                    <option value="{{ pv.id }}" {% if infoUsuario.punto_venta === pv.id %}selected{% endif %}>{{ pv.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                            <label for="nombre">Punto de Venta</label>
+                        </div>
+                    </div>
+                    <input type="hidden" id="id-usuario" value="{{ infoUsuario.id }}">
+                    <a type="button" href="./../" class="waves-effect btn lime darken-2">
+                        Volver
+                    </a>
+                    <a type="button" href="#" id="actualizar-usuario" class="waves-effect waves-light btn lime darken-2">
+                        Actualizar Usuario
+                    </a>
+                </div>
+                <div class="col s12 m6"></div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block modals %}
+    <div id="verificacion-modal" class="modal">
+        <div class="modal-content">
+            <h4>Advertencia</h4>
+            <p id="descripcion-moda-verificacion">Debe llenar todos los campos para continuar.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="continuar" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+        </div>
+    </div>
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <h4>Advertencia</h4>
+            <p>Se encontraron problemas al momento de actualizar la información.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="continuar" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+        </div>
+    </div>
+    <div id="completado-modal" class="modal">
+        <div class="modal-content">
+            <h4>Completado</h4>
+            <p>Se actualizó la información correctamente.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="continuar" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="/js/usuarios.js"></script>
+{% endblock %}

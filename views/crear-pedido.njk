@@ -1,0 +1,90 @@
+{% set titulo = 'Crear Pedido' %}
+
+{% extends 'plantilla.njk' %}
+
+{% block content %}
+<div class="card">
+	<div class="card-content">
+		<h3 class="heading">Lista de productos</h3>
+		<div class="row">
+			<div class="col s12 m6">
+				<div>{{ pv.nombre }}</div>
+				<div class="caption">{{ pv.direccion }}, {{ pv.ciudad }}</div>
+			</div>
+			<div class="col s12 m6">
+				<div>NIT: {{ pv.nit }}-{{ pv.dv }}</div>
+				<div>Sucursal: {{ pv.sucursal }}</div>
+			</div>
+		</div>
+		<form id="pedido">
+			<table id="tabla" class="table-pink">
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Nombre</th>
+						<th>Presentación</th>
+                        {% if precioHabilitado %}
+                            <th>Precio</th>
+                        {% endif %}
+						<th>Cantidad</th>
+					</tr>
+				</thead>
+				<tbody>
+	{% for prd in productos %}
+					<tr>
+						<td>{{ prd.codigo }}</td>
+						<td>{{ prd.nombre }}</td>
+						<td>{{ prd.presentacion }}</td>
+                        {% if precioHabilitado %}
+                            <td width="10%" align="center">${{ prd.precio }}</td>
+                        {% endif %}
+						<td><input class="cantidad" type="number" name="{{ prd.id }}" min="0" value="0"></td>
+					</tr>
+	{% endfor %}
+				</tbody>
+			</table>
+			<div class="row bottom">
+				<div class="col s12 m6"></div>
+				<div class="input-field col s12 m6">
+					<div class="right-align">
+						<button type="submit" class="waves-effect waves-light btn lime darken-2">Verificar</button>
+					</div>
+					
+				</div>
+			</div>
+		</form>
+		<form id="confirmacion" style="display: none;">
+			<table id="tabla-c" class="table-pink"></table>
+			<div class="row bottom">
+				<div class="input-field col s12 m6">
+					<button type="button" id="atras" class="waves-effect waves-light btn darken-2">Atrás</button>
+					<button type="submit" id="cp" class="waves-effect waves-light btn lime darken-2">Crear Pedido</button>
+					<div class="blocker" style="display: none;">{{ 'Por favor espere...' if ie }}</div>
+					<div id="progress" class="progress" style="display: none;">
+					     <div class="indeterminate"></div>
+					 </div>
+				</div>
+				<div class="col s12 m6"></div>
+					
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block modals %}
+    <div id="verificacion-modal" class="modal">
+        <div class="modal-content">
+            <h4>Advertencia</h4>
+            <p id="descripcion-moda-verificacion">-Error-</p>
+        </div>
+        <div class="modal-footer">
+            <button id="continuar" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script src="/js/crear-pedido{{ '-ie' if ie }}.js"></script>
+{% endblock %}

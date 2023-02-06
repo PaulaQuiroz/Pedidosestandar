@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Error {{ status }} - Pedidos Popsy</title>
+	<link rel="icon" href="/favicon.ico">
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" media="screen,projection">
+	<link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+	<div class="container">
+		<h1>{{ message }}</h1>
+		<h3>{{ status }}</h3>
+{% if stack %}
+		<pre>{{ stack }}</pre>
+{% endif %}
+	</div>
+	<footer>
+		&copy; 2016 Popsy - Todos los derechos reservados
+	</footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{% set titulo = 'Supervisores de Grupo' %}
+
+{% extends 'plantilla.njk' %}
+
+{% block content %}
+<div class="card">
+	<div class="card-content">
+		<h3 class="heading">Lista de supervisores</h3>
+		<div class="row">
+			<div class="input-field col s12 m6">
+				<button type="button" class="waves-effect waves-light btn lime darken-2 modal-trigger" data-target="agregar-modal">Agregar Supervisor</button>
+			</div>
+			<div class="col s12 m6"></div>
+		</div>
+		<table id="tabla" class="table-pink">
+			<thead>
+				<tr>
+					<th>E-mail / Nombre de usuario</th>
+					<th>Nombre</th>
+					<th>Descripción</th>
+					<th>Estado</th>
+					<th></th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+{% endblock %}
+
+{% block modals %}
+<form id="agregar-modal" class="modal modal-fixed-footer">
+	<div class="modal-content">
+		<h4>Agregar Supervisor</h4>
+		<div class="row">
+			<div class="input-field col s12 m6">
+				<input type="text" id="username" class="validate" name="username" placeholder="E-mail / Nombre de usuario" required>
+				<label for="username">E-mail / Nombre de usuario</label>
+			</div>
+			<div class="input-field col s12 m6">
+				<input type="text" id="nombre" class="validate" name="nombre" placeholder="Nombre y Apellido" required>
+				<label for="nombre">Nombre</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<input type="text" id="descripcion" class="validate" name="descripcion" placeholder="Descripción del usuario" required>
+				<label for="descripcion">Descripción</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12 m6">
+				<input type="password" id="pass" class="validate" name="pass" placeholder="Contraseña" pattern=".{6,}" title="Ingrese al menos seis caracteres" required>
+				<label for="pass">Contraseña</label>
+			</div>
+			<div class="input-field col s12 m6">
+				<input type="password" id="re-pass" class="validate" placeholder="Re-ingrese Contraseña" pattern=".{6,}" title="Ingrese al menos seis caracteres" required>
+				<label for="re-pass">Re-ingrese Contraseña</label>
+			</div>
+		</div>
+	</div>
+		<div class="modal-footer">
+		<button type="button" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</button>
+		<button type="submit" class="waves-effect waves-green btn-flat">Siguiente</button>
+	</div>
+</form>
+
+<form id="restablecer-modal" class="modal">
+	<input type="hidden" id="restablecer-hidden" name="id">
+	<div class="modal-content">
+		<p>¿Está seguro que desea restablecer la contraseña del usuario?</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</button>
+		<button type="submit" class="waves-effect waves-green btn-flat">Restablecer</button>
+	</div>
+</form>
+{% endblock %}
+
+{% block js %}
+<script src="/js/sups.js"></script>
+{% endblock %}

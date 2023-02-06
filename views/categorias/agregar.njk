@@ -1,0 +1,70 @@
+{% set titulo = 'Crear categoria' %}
+
+{% extends '../plantilla.njk' %}
+
+{% block content %}
+	<div class="card">
+		<div class="card-content">
+			<h3 class="heading">Agregar</h3>
+			<div class="row">
+				<div class="input-field col s12 m12">
+                    <div class="row">
+                        <div class="input-field col s6 m6">
+                            <input type="text" id="nombre" class="validate" placeholder="Nombre de la categoria">
+                            <label for="username">Nombre</label>
+                        </div>
+                        <div class="input-field col s6 m6">
+                            <select class="validate" name="habilitado" id="estado">
+                                <option value="S">Habilitado</option>
+                                <option value="N">Deshabilitado</option>
+                            </select>
+                            <label for="nombre">Mostrar precios</label>
+                        </div>
+                    </div>
+                    <a type="button" href="./" class="waves-effect btn lime darken-2">
+                        Volver
+                    </a>
+					<a type="button" href="#" id="crear-categoria" class="waves-effect waves-light btn lime darken-2">
+                        Crear Categoria
+                    </a>
+				</div>
+				<div class="col s12 m6"></div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
+
+{% block modals %}
+    <div id="verificacion-modal" class="modal">
+        <div class="modal-content">
+            <h4>Advertencia</h4>
+            <p id="descripcion-moda-verificacion">Debe llenar todos los campos para continuar.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="continuar" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+        </div>
+    </div>
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <h4>Advertencia</h4>
+            <p>Se encontraron problemas al momento de guardar la información.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="continuar" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+        </div>
+    </div>
+    <div id="completado-modal" class="modal">
+        <div class="modal-content">
+            <h4>Completado</h4>
+            <p>Se guardó la información correctamente.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="btn-volver-atras" type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Continuar</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+	<script src="/js/categorias.js"></script>
+{% endblock %}

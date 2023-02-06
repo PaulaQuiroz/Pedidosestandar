@@ -1,0 +1,87 @@
+<!DOCTYPE html{% if ie %} PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"{% endif %}>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+{% if not ie %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+{% endif %}
+	<title>{{ titulo }}{{ ' - ' if titulo }}Pedidos Popsy</title>
+	<link rel="icon" href="/favicon.ico">
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" media="screen,projection">
+	<link rel="stylesheet" href="/css/pedidos.css">
+</head>
+<body>
+{% if not ie %}
+	<header class="col s12">
+		<a href="#" class="toggle-menu button-collapse" data-activates="slide-out"><img src="/img/icn/lines-menu.png" alt=""></a>
+		<img src="/img/logo-white.png">
+		<div class="date-header">
+			<i class="material-icons">schedule</i>
+			<span id="Fecha_Reloj"></span>
+		</div>
+		<div class="user-info right">
+			<a href="#" onclick="return false;">{{ usuario.nombre }}</a>
+			<img src="/img/icn/user.png" class="dropdown-button" data-activates='dropdown1'>
+			<ul id='dropdown1' class='dropdown-content'>
+				<li><a href="/logout">Cerrar sesión</a>
+				<span></span></li>
+			</ul>
+		</div>
+	</header>
+	<div id="slide-out" class="menu side-nav">
+		<img src="/img/bg/helados.png" alt="">
+		<span class="close"><i class="material-icons">close</i></span>
+		<ul>
+{% if usuario.rol == 1 %}
+			<li><a class="waves-effect" href="/admins"><i class="material-icons">note_add</i><span>Administradores de Cadena</span></a></li>
+			<li><a class="waves-effect" href="/bodegas"><i class="material-icons">label</i><span>Configurar Bodegas</span></a></li>
+    <li><a class="waves-effect" href="/productos"><i class="material-icons">label</i><span>Configurar Productos</span></a></li>
+    <li><a class="waves-effect" href="/categorias"><i class="material-icons">label</i><span>Configurar Categorías</span></a></li>
+    <li><a class="waves-effect" href="/importar"><i class="material-icons">add_circle</i><span>Importar Bases de Datos</span></a></li>
+		    <li><a class="waves-effect" href="/usuarios"><i class="material-icons">settings_applications</i><span>Administrar Usuarios</span></a></li>
+{#
+			<li><a class="waves-effect" href="/popups"><i class="material-icons">settings_applications</i><span>Administrar POP-UPS</span></a></li>
+#}
+{% else %}
+{% if usuario.rol == 2 or usuario.rol == 3 %}
+{% if usuario.rol == 2 %}
+			<li><a class="waves-effect" href="/sups"><i class="material-icons">note_add</i><span>Supervisores de Grupo</span></a></li>
+{% else %}
+			<li><a class="waves-effect" href="/pvs"><i class="material-icons">note_add</i><span>Usuarios de Puntos de Venta</span></a></li>
+{% endif %}
+{% endif %}
+			<li><a class="waves-effect" href="/pedidos"><i class="material-icons">format_list_numbered</i><span>Historial de Pedidos</span></a></li>
+			<li><a class="waves-effect" href="/crear-pedido"><i class="material-icons">note_add</i><span>Crear Pedido</span></a></li>
+{% endif %}
+			<li><a class="waves-effect" href="/perfil/editar"><i class="material-icons">settings_applications</i><span>Editar Perfil</span></a></li>
+		</ul>
+	</div>
+{% endif %}
+	<div class="container">
+		<div class="title-section">
+{% if ie %}
+			<div class="right-align">
+				<a href="/logout">Cerrar sesión</a>
+			</div>
+{% endif %}
+			<img src="/img/icn/user-add.png" alt="">
+			<h3>{{ titulo | upper }}</h3>
+		</div>
+{% block content %}{% endblock %}
+	</div>
+	<footer>
+		&copy; <span id="yr"></span> Popsy - Todos los derechos reservados
+	</footer>
+{% block modals %}{% endblock %}
+{% if ie %}
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+{% else %}
+	<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+	<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="/js/common.js"></script>
+{% endif %}
+{% block js %}{% endblock %}
+</body>
+</html>
